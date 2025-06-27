@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Nageswari's Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      background-image: url("background.jpg");
+      background-size: cover;
+      background-attachment: fixed;
+      margin: 0;
+      height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+    }
+    
+    /* Hide scrollbars */
+    ::-webkit-scrollbar { display: none; }
+    * { overflow-x: hidden; }
+    
+    .navbar-container {
+      height: 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 5%;
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 40px;
+    }
+    
+    .nav-menu a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      transition: color 0.3s;
+      position: relative;
+    }
+    
+    .nav-menu a:hover {
+      color: rgb(247, 73, 64);
+    }
+    
+    .nav-menu a:hover::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: rgb(247, 73, 64);
+    }
+    
+    .bgh {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 60px 0;
+    }
+    
+    p {
+      text-align: left;
+      max-width: 800px;
+      margin: 20px 0;
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+    
+    h1 {
+      font-weight: 900;
+      font-size: 3.5rem;
+      color: #2d3436;
+      margin-bottom: 20px;
+    }
+    
+    h2 {
+      font-weight: 700;
+      color: #9b0702;
+      margin-bottom: 30px;
+      position: relative;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 80px;
+      height: 3px;
+      background-color: #9b0702;
+    }
+    
+    img.profile-pic {
+      border-radius: 50%;
+      border: 5px solid white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      
+      transition: transform 0.3s ease;
+    }
+    
+    img.profile-pic:hover {
+      transform: scale(1.05);
+    }
+    img.my-image {
+border-radius: 50%;
+transition: transform 0.3s ease;
+    }
+    img.my-image:hover {
+      transform: scale(1.05);
+    }
+    
+    .vertical-social {
+      position: fixed;
+      left: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      z-index: 100;
+    }
+    
+    .social-icons-center {
+      display: flex;
+      justify-content: left;
+      gap: 25px;
+      margin-top: 30px;
+    }
+  
+    .social-icon {
+      color:#555;
+      font-size: 1.8rem;
+      transition: all 0.3s;
+    }
+        .skill-icon {
+      color:#555;
+      font-size: 1.2rem;
+      transition: all 0.3s;
+    }
+    
+    .btn-light{
+      color: #ffffff;
+      background-color: #262525;
+      font-weight: 500;
+      padding: 12px 25px;
+      border-radius: 30px;
+      transition: all 0.3s;
+      border: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .btn-light:hover {
+      background-color: #9b0702;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+    
+    .social-icon:hover {
+      transform: translateY(-5px);
+    }
+    
+    .fa-linkedin:hover { color: #0077b5; }
+    .fa-github:hover { color: #333; }
+    .fa-instagram:hover { color: #e4405f; }
+    .fa-youtube:hover { color: #ff0000; }
+    .fa-envelope:hover { color: #ea4335; }
+    
+    /* About section styles */
+    .about-section {
+      background-color: rgba(255, 255, 255, 0.85);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      margin: 40px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .about-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(to bottom, #9b0702, #ff6b6b);
+    }
+    
+    .about-content {
+      padding-left: 30px;
+    }
+    
+    
+    .highlight {
+      color: #9b0702;
+      font-weight: 700;
+    }
+    
+    .skill-badge {
+      display: inline-block;
+      background-color: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 20px;
+      padding: 8px 20px;
+      margin: 5px 8px 5px 0;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+    }
+    
+    .skill-badge:hover {
+      background-color: #9b0702;
+      color: white;
+      transform: translateY(-3px);
+    }
+    
+    /* Skills Section */
+    .skills-section {
+      background-color: rgba(255, 255, 255, 0.85);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      margin: 40px 0;
+    }
+    
+    .skills-progress {
+      margin-bottom: 50px;
+    }
+    
+    .skill-item {
+      margin-bottom: 30px;
+    }
+    
+  
+    .skill-title {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    
+    .progress {
+      height: 10px;
+      border-radius: 5px;
+      background-color: #e9ecef;
+    }
+    
+    .progress-bar {
+      background: linear-gradient(to right, #9b0702, #ff6b6b);
+    
+    }
+  
+    
+    /* Expertise Cards */
+    .expertise-card {
+      background: #fff;
+      border-radius: 15px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+    
+    .expertise-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    
+    .expertise-icon {
+      font-size: 3rem;
+      color: #9b0702;
+      margin-bottom: 20px;
+    }
+    
+    @media (max-width: 992px) {
+      .about-content {
+        padding-left: 0;
+        margin-top: 30px;
+      }
+      
+      .nav-menu {
+        gap: 20px;
+      }
+      
+      .profile-pic {
+        margin: right;
+        display: block;
+      }
+      
+      h1 {
+        font-size: 2.8rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .navbar-container {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+      }
+      
+      .nav-menu {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .vertical-social {
+        display: none;
+      }
+      
+      .social-icons-center {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <div class="navbar-container">
+    <img src="logo.png" height="90" width="100" alt="Logo"/>
+    
+    <nav class="nav-menu">
+      <a href="#home">HOME</a>
+      <a href="#about">ABOUT ME</a>
+      <a href="#skills">SKILLS</a>
+      <a href="#my portfolio">MY PORTFOLIO</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+  </div>
+
+  <!-- HOME Page -->
+  <section id="home" class="bgh">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-sm-6">
+          <div class="px-4">
+            <h1>Hi, It's Nageswari</h1>
+            <h2>Web Developer</h2>
+            <h4 class="mt-4 fs-5">I'm a BCA student who creates beautiful websites using HTML, CSS, and Bootstrap.</h4>
+            <div class="social-icons-center">
+              <a href="https://www.linkedin.com/in/nageswari-n-6912b036b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-icon" target="blank"><i class="fab fa-linkedin"></i></a>
+              <a href="https://github.com/7whouess/Digital-portofolio" class="social-icon" target="blank"><i class="fab fa-github"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+              <a href="https://youtube.com/@vjthalapathy26?si=g8Zm5L_64GWT3VSV" class="social-icon" target="blank"><i class="fab fa-youtube"></i></a>
+              <a href="mailto:your@email.com" class="social-icon"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 text-center">
+          <img src="Picture.jpg" class="profile-pic" height="400" width="400"/>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- About Page -->
+  <section id="about" class="bgh">
+    <div class="container">
+      <div class="about-section">
+        <div class="row">
+          <div class="col-sm-7">
+            <button type="button" class="btn btn-light mb-5">About Me</button>
+            <div class="about-content">
+              <h2>Why hire me for your next project?</h2>
+              <p>I'm a <span class="highlight">Creative Director and UI/UX Designer</span> from Chennai, specializing in Web Development and print media. With a passion for creating intuitive digital experiences, I transform complex challenges into elegant solutions.</p>
+              
+              <p>I enjoy turning complex problems into simple, beautiful and intuitive designs. My approach combines aesthetic sensibility with technical precision to deliver products that users love.</p>
+              
+              <p>My mission is to build websites that are not just functional and user-friendly, but also visually compelling. I believe that great design should both delight the eye and serve a purpose.</p>
+              
+              <p>Moreover, I add a personal touch to every project, ensuring your product stands out in today's competitive digital landscape. I focus on creating eye-catching interfaces that remain easy to use and navigate.</p>
+            </div>
+          </div>
+          <div class="col-lg-5 d-flex align-items-center justify-content-center">
+            <img src="my-image.jpg" class="my-image" height="400" width="400"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Skills Page -->
+  <section id="skills" class="bgh">
+    <div class="container">
+      <div class="skills-section">
+        <button type="button" class="btn btn-light mb-5">SKILLS</button>
+        
+        <!-- Skills Progress -->
+        <div class="skills-progress">
+          <h2 class="mb-4">Technical Skills</h2>
+          <div class="row">
+            <div class="col-md-6 skill-item">
+              <div class="skill-title">
+                <span>
+                  <i class="fab fa-html5 skill-icon"></i>
+                  HTML
+                </span>
+                <span>85%</span>
+              </div>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 85%"></div>
+              </div>
+            </div>
+            
+            <div class="col-md-6 skill-item">
+              <div class="skill-title">
+                <span>
+                  <i class="fab fa-css3-alt skill-icon"></i>
+                  CSS
+                </span>
+                <span>80%</span>
+              </div>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 80%"></div>
+              </div>
+            </div>
+            
+            <div class="col-md-6 skill-item">
+              <div class="skill-title">
+                <span>
+                  <i class="fab fa-bootstrap skill-icon"></i>
+                  Bootstrap
+                </span>
+                <span>90%</span>
+              </div>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 90%"></div>
+              </div>
+            </div>
+            
+            <div class="col-md-6 skill-item">
+              <div class="skill-title">
+                <span>
+                  <i class="fab fa-php skill-icon"></i>
+                  PHP
+                </span>
+                <span>35%</span>
+              </div>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 35%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Personal Skills -->
+        <div class="personal-skills">
+          <h2 class="mb-4">Personal Skills</h2>
+          <div class="row">
+            <div class="col-md-6 skill-item">
+              <div class="skill-title">
+                <span>
+                  <i class="fas fa-table-tennis skill-icon"></i>
+                  Shuttle Player
+                </span>
+                <span>80%</span>
+              </div>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 80%"></div>
+              </div>
+            </div>
+            
+            <div class="col-md-6 skill-item">
+              <div class="skill-title">
+                <span>
+                  <a href="https://drive.google.com/file/d/101REzxw9PuA0aYppvEm41LnlpRyz_Ark/view?usp=drivesdk" class="skill-icon" target="blank">
+                  <i class="fas fa-paint-brush skill-icon"></i>
+                  Drawing Artist
+                </span></a>
+                <span>99%</span>
+              </div>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 99%"></div>
+              </div>
+            </div>
+            
+            <div class="col-md-6 skill-item">
+              <div class="skill-title">
+                <span>
+                  <a href="https://drive.google.com/file/d/1-zddEBC-e29nwLG0uLngYzRjvo_1GbuL/view?usp=drivesdk" class="skill-icon" target="blank">
+                  <i class="fas fa-camera skill-icon"></i>
+                  Photography
+                </span></a>
+                <span>93%</span>
+              </div>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 93%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+        </section>
+      
+        <!-- My Portfolio -->
+<section id="portfolio" class="bgh">
+  <div class="container">
+    <div class="my portfolio">
+      <button type="button" class="btn btn-light mb-5">MY PORTFOLIO</button>
+      <h2 class="mb-5 text-center">My Project</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-4 mb-4">
+          <div class="expertise-card">
+            <div class="expertise-icon">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <h4>My Portfolio Website</h4>
+            <p>Personal portfolio showcasing my web development skills</p>
+            <div class="mt-3 text-center">
+              <a href="https://github.com/7whouess/Digital-portofolio" class="social-icon" target="_blank">
+                <i class="fab fa-github fa-2x"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+  <!-- Contact Page -->
+  <section id="contact" class="bgh">
+  <div class="container">
+    <div class="Contact mt-5">
+      <button type="button" class="btn btn-light mb-5">CONTACT</button>
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+          <h2 class="mb-4">Get In Touch</h2>
+          <p class="lead mb-5">Have a project in mind or want to discuss opportunities? I'd love to hear from you!</p>
+          
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                  <i class="fas fa-envelope fa-2x mb-3" style="color: #9b0702;"></i>
+                  <h5>Email Me</h5>
+                  <p>vijaynageswari26@example.com</p>
+                  <a href="mailto:vijaynageswari26@example.com" class="btn btn-outline-dark">Send Message</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                  <i class="fas fa-map-marker-alt fa-2x mb-3" style="color: #9b0702;"></i>
+                  <h5>Location</h5>
+                  <p>Thiruvallur, Tamil Nadu</p>
+                  <a href="https://www.google.com/maps?q=manavalanagar+Thiruvallur" class="btn btn-outline-dark">View Map</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="social-icons-center mt-5">
+            <a href="https://www.linkedin.com/in/nageswari-n-6912b036b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-icon"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/7whouess/Digital-portofolio" class="social-icon"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/@vjthalapathy26?si=g8Zm5L_64GWT3VSV" class="social-icon"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <footer class="py-4 text-center" style="background: rgba(0,0,0,0.8); color: white;">
+    <div class="container">
+      <p>&copy; 2025 Nageswari's Portfolio. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
